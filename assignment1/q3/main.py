@@ -16,10 +16,11 @@ for starting_point in starting_points:
 
 print("\n*****************************\n")
 print("Simulated Annealing: ")
-chosen_step_sizes = [0.06, 0.07, 0.08]
+chosen_step_sizes = [0.01, 0.02, 0.06, 0.07, 0.08, 0.1]
 
-for starting_point in starting_points:
-    print("\nStarting point: ", starting_point, end="\n\n")
-    for step_size in chosen_step_sizes:
-        result = optimization.simulated_annealing(func, starting_point, step_size, [0, 10], 0.7, 0.00001)
+
+for step_size in chosen_step_sizes:
+    print("\nStep size: ", step_size, end="\n\n")
+    for starting_point in starting_points:
+        result = optimization.simulated_annealing(func, starting_point, step_size, [0, 10], 0.7, 0.9999)
         print(result)

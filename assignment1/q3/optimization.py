@@ -31,7 +31,7 @@ def simulated_annealing(func, initial_pos, step_size, bounded_range, temp, cooli
     current_pos_val = func(initial_pos)
     iterations = 0
 
-    while temp > 0:
+    while temp > 0.00001:
         neighbours = [(func(current_pos + step_size), current_pos + step_size),
                       (func(current_pos - step_size), current_pos - step_size)]
         random_neighbour = random.choice(neighbours)
@@ -46,7 +46,7 @@ def simulated_annealing(func, initial_pos, step_size, bounded_range, temp, cooli
             current_pos_val = random_neighbour[0]
             current_pos = random_neighbour[1]
 
-        temp -= cooling_rate
+        temp *= cooling_rate
         iterations += 1
 
     return round(current_pos, 5), round(current_pos_val, 5), iterations
